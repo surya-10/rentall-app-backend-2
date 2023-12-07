@@ -124,6 +124,6 @@ setInterval(async ()=>{
     let allBikes = await getAllImageTrail()
     // console.log(allBikes)
     let checkRental = await checkEndDate(allBikes);
-}, 432000000)
+}, 10000)
 
 export default imagesRouter;
