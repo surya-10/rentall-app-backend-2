@@ -27,8 +27,10 @@ export async function findUserAndUpdate(id, startDate, endDate, price, days, boo
 }
 export function checkEndDate(datas) {
     for (let data of datas) {
-        
+        // console.log(data.endDate)
+        if(data.endDate){
         const dateObject = new Date(data.endDate);
+        // console.log(dateObject)
         const formattedDate = dateObject.toLocaleDateString('en-GB', {
             day: '2-digit',
             month: '2-digit',
@@ -40,12 +42,19 @@ export function checkEndDate(datas) {
             month:"2-digit",
             year:"numeric"
         })
-        const date1 = new Date(formattedDate);
-        const date2 = new Date(todayFormattedDate);
+        // console.log("format", formattedDate);
+        // console.log("today", todayFormattedDate);
+        let changeFormat1 = formattedDate.split("/");
+
+        const date1 = new Date(`${changeFormat1[2]}-${changeFormat1[1]}-${changeFormat1[0]}`);
+        let changeFormat2 = todayFormattedDate.split("/");
+        const date2 = new Date(`${changeFormat2[2]}-${changeFormat2[1]}-${changeFormat2[0]}`);
+        console.log("d1", date1);
+        console.log("d2", date2);
         if(date2>date1){
              changeBikeStatus(data._id);
         }
-        
+    }
     }
 }
 async function changeBikeStatus(id){
