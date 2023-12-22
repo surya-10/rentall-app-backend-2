@@ -49,8 +49,6 @@ export function checkEndDate(datas) {
         const date1 = new Date(`${changeFormat1[2]}-${changeFormat1[1]}-${changeFormat1[0]}`);
         let changeFormat2 = todayFormattedDate.split("/");
         const date2 = new Date(`${changeFormat2[2]}-${changeFormat2[1]}-${changeFormat2[0]}`);
-        console.log("d1", date1);
-        console.log("d2", date2);
         if(date2>date1){
              changeBikeStatus(data._id);
         }
